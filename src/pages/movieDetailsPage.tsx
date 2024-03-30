@@ -32,6 +32,12 @@ const MoviePage: React.FC = () => {
 
   useEffect(() => {
     getMovie(id ?? "").then((movie) => {
+      const favMovies = JSON.parse(localStorage.getItem("favourites") || "[]");
+      favMovies.forEach((favMovie: MovieT) => {
+        if (favMovie.id === movie.id) {
+          movie.favourite = true;
+        }
+      });
       setMovie(movie);
     });
   }, [id]);

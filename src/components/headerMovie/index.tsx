@@ -6,6 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { MovieT } from "../../types/interfaces";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import Avatar from "@mui/material/Avatar";
 
 const styles = {
   root: {
@@ -23,6 +25,12 @@ const MovieHeader: React.FC<MovieT> = (props) => {
       <IconButton aria-label="go back">
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
+
+      {props.favourite && (
+        <Avatar sx={{ backgroundColor: "rgb(255, 0, 0)" }}>
+          <FavoriteIcon />
+        </Avatar>
+      )}
 
       <Typography variant="h4" component="h3">
         {props.title}
