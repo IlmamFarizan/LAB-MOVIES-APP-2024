@@ -1,4 +1,4 @@
-import React, { MouseEvent, useContext } from "react";
+import React, { MouseEvent, ReactNode, useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,13 +10,11 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
 import img from "../../images/film-poster-placeholder.png";
-import { BaseMovie } from "../../types/interfaces";
+import { ListedMovie } from "../../types/interfaces";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
-import { ListedMovie } from "../../types/interfaces";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -26,20 +24,16 @@ const styles = {
   },
 };
 
-interface MovieCardProps extends BaseMovie {
-  selectFavourite: (movieId: number) => void;
+interface MovieListProps {
+  movie: ListedMovie;
+  action: (m: ListedMovie) => React.ReactNode;
 }
 
-const MovieCard: React.FC<ListedMovie> = (props) => {
-  const movie = { ...props, favourite: false };
-  const { favourites, addToFavourites } = useContext(MoviesContext);
+const MovieCard: React.FC<MovieListProps> = (props) => {
+  const movie = { ...props.movie, favourite: false };
+  const { favourites } = useContext(MoviesContext);
 
   if (favourites.find((id) => id === movie.id)) movie.favourite = true;
-
-  const handleAddToFavourite = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    addToFavourites(movie);
-  };
 
   return (
     <Card sx={styles.card}>
@@ -82,12 +76,7 @@ const MovieCard: React.FC<ListedMovie> = (props) => {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton
-          aria-label="add to favourites"
-          onClick={handleAddToFavourite}
-        >
-          <FavoriteIcon color="primary" fontSize="large" />
-        </IconButton>
+        {props.action(movie)}
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
