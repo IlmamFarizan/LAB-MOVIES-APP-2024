@@ -1,4 +1,4 @@
-import React, { MouseEvent, ReactNode, useContext } from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -11,10 +11,10 @@ import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from "../../images/film-poster-placeholder.png";
-import { ListedMovie } from "../../types/interfaces";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { ListedMovie } from "../../types/interfaces";
 
 const styles = {
   card: { maxWidth: 345 },
