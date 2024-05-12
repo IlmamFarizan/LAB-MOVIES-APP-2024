@@ -28,14 +28,14 @@ export interface MovieT extends BaseMovie {
     name: string;
   }[];
   production_countries: {
-    id: number;
+    iso_3166_1: string;
     name: string;
   }[];
 }
 
 export interface MovieImage {
   file_path: string;
-  aspect_ratio?: number;
+  aspect_ratio?: number; //some props are optional...
   height?: number;
   iso_639_1?: string;
   vote_average?: number;
@@ -49,6 +49,10 @@ export interface ListedMovie extends BaseMovie {
 
 export type FilterOption = "title" | "genre";
 
+export type FilterOptionTVShow = "name" | "genre";
+
+export type FilterOptionPerson = "name" | "gender";
+
 export interface MovieListPageTemplateProps {
   movies: ListedMovie[];
   title: string;
@@ -61,14 +65,9 @@ export interface Review {
   author: string;
 }
 
-interface UpcomingMovies {
-  page: number;
-  total_pages: number;
-  total_results: number;
-  results: BaseMovie[];
-}
-
 export interface GenreData {
+  id: Key | null | undefined;
+  name: ReactNode;
   genres: {
     id: string;
     name: string;
@@ -90,10 +89,19 @@ export interface Review {
   movieId: number;
 }
 
+interface UpcomingMovies {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  results: BaseMovie[];
+}
+
 export interface BaseTVShow {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
+  homepage: string | undefined;
+  tagline: string;
   id: number;
   origin_country: string[];
   original_language: string;
@@ -136,5 +144,142 @@ export interface BasePerson {
   original_name: string;
   popularity: number;
   profile_path: string;
-  known_for: knownFor[];
+  known_for: knownFor[]; // could this be tv show either?
+}
+
+export interface TVShowListPageTemplateProps {
+  tvShows: TVShowT[];
+  title: string;
+  action: (m: TVShowT) => React.ReactNode;
+}
+
+interface DiscoverTVShows {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  results: BaseTVShow[];
+}
+
+export interface TVShowImage {
+  file_path: string;
+  aspect_ratio?: number; //some props are optional...
+  height?: number;
+  iso_639_1?: string;
+  vote_average?: number;
+  vote_count?: number;
+  width?: number;
+}
+
+export interface TVShowT extends BaseTVShow {
+  genres: {
+    id: number;
+    name: string;
+  }[];
+}
+
+interface AiringTodayTVShows {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  results: BaseTVShow[];
+}
+
+export interface PeopleListPageTemplateProps {
+  people: BasePerson[];
+  title: string;
+  action: (m: BasePerson) => React.ReactNode;
+}
+
+export interface GenderData {
+  genders: {
+    id: string;
+    name: string;
+  }[];
+}
+
+export interface PersonT extends BasePerson {
+  gender: {
+    id: number;
+    name: string;
+  }[];
+}
+
+interface DiscoverPeople {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  results: BasePerson[];
+}
+
+export interface PersonT extends BasePerson {
+  biography: string;
+  also_known_as: string[];
+  birthday: string;
+  place_of_birth: string;
+  favourite: boolean;
+}
+
+export interface PeopleImage {
+  file_path: string;
+  aspect_ratio?: number; //some props are optional...
+  height?: number;
+  iso_639_1?: string;
+  vote_average?: number;
+  vote_count?: number;
+  width?: number;
+}
+
+interface DiscoverPersonMovies {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  cast: BaseMovie[];
+}
+interface DiscoverPersonDetails {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  person: PersonT;
+}
+
+interface DiscoverPersonTVShows {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  cast: TVShowT[];
+}
+
+export interface TVShowReview {
+  author: string;
+  content: string;
+  agree: boolean;
+  rating: number;
+  tvShowId: number;
+}
+
+interface DiscoverCredits {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  cast: PersonT[];
+  crew: PersonT[];
+}
+
+interface DiscoverSimilarVShows {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  results: BaseTVShow[];
+}
+
+export interface TVShowSearch {
+  tvShowName: string;
+}
+
+export interface MovieSearch {
+  movieName: string;
+}
+
+export interface PersonSearch {
+  personName: string;
 }

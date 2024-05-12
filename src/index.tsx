@@ -12,6 +12,9 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from "./pages/addMovieReviewPage";
 import PlayListMoviesPage from "./pages/playListPage";
+import TVShowsHomePage from "./pages/tvShowsHomePage";
+import TVShow from "./pages/tvShowDetailsPage";
+import TVShowContextProvider from "./contexts/tvShowsContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,20 +32,25 @@ const App = () => {
       <BrowserRouter>
         <SiteHeader />
         <MoviesContextProvider>
-          <Routes>
-            <Route path="/reviews/form" element={<AddMovieReviewPage />} />
-            <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-            <Route path="/reviews/:id" element={<MovieReviewPage />} />
-            <Route
-              path="/movies/favourites"
-              element={<FavouriteMoviesPage />}
-            />
-            <Route path="/movies/playList" element={<PlayListMoviesPage />} />
-            <Route path="/movies/:id" element={<MoviePage />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
+          <TVShowContextProvider>
+            <Routes>
+              <Route path="/reviews/form" element={<AddMovieReviewPage />} />
+              <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+              <Route path="/reviews/:id" element={<MovieReviewPage />} />
+              <Route
+                path="/movies/favourites"
+                element={<FavouriteMoviesPage />}
+              />
+              <Route path="/movies/playList" element={<PlayListMoviesPage />} />
+              <Route path="/movies/:id" element={<MoviePage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="/tvshows/" element={<TVShowsHomePage />} />
+              <Route path="/tvshows/:id" element={<TVShow />} />
+            </Routes>
+          </TVShowContextProvider>
         </MoviesContextProvider>
+        <SiteHeader />
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
