@@ -15,6 +15,8 @@ import PlayListMoviesPage from "./pages/playListPage";
 import TVShowsHomePage from "./pages/tvShowsHomePage";
 import TVShow from "./pages/tvShowDetailsPage";
 import TVShowContextProvider from "./contexts/tvShowsContext";
+import FavouriteTVShowsPage from "./pages/favouriteTVShowsPage";
+import TVShowsAiringTodayPage from "./pages/tvShowsAiringTodayPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -47,6 +49,14 @@ const App = () => {
               <Route path="*" element={<Navigate to="/" />} />
               <Route path="/tvshows/" element={<TVShowsHomePage />} />
               <Route path="/tvshows/:id" element={<TVShow />} />
+              <Route
+                path="/tvshows/favourites/"
+                element={<FavouriteTVShowsPage />}
+              />
+              <Route
+                path="/tvshows/today"
+                element={<TVShowsAiringTodayPage />}
+              />
             </Routes>
           </TVShowContextProvider>
         </MoviesContextProvider>

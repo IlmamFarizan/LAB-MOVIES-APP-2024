@@ -153,7 +153,7 @@ export const getTVShowReviews = (id: string | number) => {
 
 export const getTVShow = (id: string) => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=${
+    `https://api.themoviedb.org/3/tv/${id}?api_key=${
       import.meta.env.VITE_TMDB_KEY
     }`
   )
@@ -165,6 +165,25 @@ export const getTVShow = (id: string) => {
       }
       return response.json();
     })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getTVShowsAiringToday = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/tv/airing_today?api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&language=en-US&page=1`
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch tv shows. Response status: ${response.status}`
+        );
+      return response.json();
+    })
+
     .catch((error) => {
       throw error;
     });

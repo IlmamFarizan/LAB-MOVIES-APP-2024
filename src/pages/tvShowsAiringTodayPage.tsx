@@ -1,12 +1,12 @@
 import React from "react";
 import PageTemplate from "../components/templateTVShowListPage";
-import { getTVShows } from "../api/tmdb-api";
+import { getTVShowsAiringToday } from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
 import TVShowFilterUI, {
   nameFilter,
   genreFilter,
 } from "../components/tvShowFilterUI";
-import { DiscoverTVShows } from "../types/interfaces";
+import { AiringTodayTVShows } from "../types/interfaces";
 import { BaseTVShow } from "../types/interfaces";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
@@ -23,11 +23,11 @@ const genreFiltering = {
   condition: genreFilter,
 };
 
-const HomePage = (props: any) => {
-  const { data, error, isLoading, isError } = useQuery<DiscoverTVShows, Error>(
-    "tvhome",
-    getTVShows
-  );
+const TVShowsAiringToday = (props: any) => {
+  const { data, error, isLoading, isError } = useQuery<
+    AiringTodayTVShows,
+    Error
+  >("discover", getTVShowsAiringToday);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [nameFiltering, genreFiltering]
@@ -56,7 +56,7 @@ const HomePage = (props: any) => {
   return (
     <>
       <PageTemplate
-        title="Discover TV Shows"
+        title="TV Shows Airing Today"
         tvShows={displayedTVShows}
         action={(tvshow: BaseTVShow) => {
           return <AddToFavouritesIcon {...tvshow} />;
@@ -70,4 +70,4 @@ const HomePage = (props: any) => {
     </>
   );
 };
-export default HomePage;
+export default TVShowsAiringToday;

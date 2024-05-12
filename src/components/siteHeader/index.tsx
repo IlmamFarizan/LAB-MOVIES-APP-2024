@@ -95,22 +95,6 @@ const SiteHeader: React.FC = () => {
   const handleClose = () => {
     setAnchorElIcon(null);
   };
-  /* const menuOptions = [
-    { label: "Home", path: "/" },
-    { label: "Upcoming Movies", path: "/movies/upcoming" },
-    { label: "Favorites", path: "/movies/favourites" },
-    { label: "My PlayList", path: "/movies/playlist" },
-    { label: "Option 4", path: "/" },
-  ];
-
-  const handleMenuSelect = (pageURL: string) => {
-    navigate(pageURL);
-  };
-
-  const handleMenu = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-*/
 
   return (
     <>
