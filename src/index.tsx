@@ -24,6 +24,7 @@ import PersonTVShowsPage from "./pages/personTVShowsPage";
 import AddMovieTVShowPage from "./pages/addTVShowReviewPage";
 import MovieCast from "./pages/movieCastPage";
 import MovieCrew from "./pages/movieCrewPage";
+import TVShowSimilar from "./pages/tvShowSimilarPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -59,6 +60,7 @@ const App = () => {
               <Route path="*" element={<Navigate to="/" />} />
               <Route path="/tvshows/" element={<TVShowsHomePage />} />
               <Route path="/tvshows/:id" element={<TVShow />} />
+              <Route path="/tvshows/:id/similar" element={<TVShowSimilar />} />
               <Route
                 path="/tvshows/favourites/"
                 element={<FavouriteTVShowsPage />}

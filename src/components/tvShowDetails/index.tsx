@@ -10,6 +10,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import TVShowReviews from "../tvShowReviews";
+import Link from "@mui/material/Link";
 
 const styles = {
   chipSet: {
@@ -62,6 +63,11 @@ const TVShowDetails: React.FC<TVShowT> = (props) => {
         />
         <Chip label={`Released: ${tvShow.first_air_date}`} />
       </Paper>
+      <Typography variant="h5" component="h3">
+        <Link href={`/tvShows/${tvShow.id}/similar`}>
+          View Shows similar to {tvShow.name}
+        </Link>
+      </Typography>
       <Fab
         color="secondary"
         variant="extended"

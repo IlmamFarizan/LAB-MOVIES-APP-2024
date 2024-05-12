@@ -6,7 +6,7 @@ import { PeopleListPageTemplateProps } from "../../types/interfaces";
 
 const styles = {
   root: {
-    backgroundColor: "#000000",
+    backgroundColor: "#A9A9A9",
   },
 };
 
