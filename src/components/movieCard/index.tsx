@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { ListedMovie } from "../../types/interfaces";
+import { CardActionArea } from "@mui/material";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -37,28 +38,32 @@ const MovieCard: React.FC<MovieListProps> = (props) => {
 
   return (
     <Card sx={styles.card}>
-      <CardHeader
-        avatar={
-          movie.favourite ? (
-            <Avatar sx={styles.avatar}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
-        }
-        title={
-          <Typography variant="h5" component="p">
-            {movie.title}{" "}
-          </Typography>
-        }
-      />
-      <CardMedia
-        sx={styles.media}
-        image={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : img
-        }
-      />
+      <CardActionArea>
+        <Link to={`/movies/${movie.id}`}>
+          <CardHeader
+            avatar={
+              movie.favourite ? (
+                <Avatar sx={styles.avatar}>
+                  <FavoriteIcon />
+                </Avatar>
+              ) : null
+            }
+            title={
+              <Typography variant="h5" component="p">
+                {movie.title}{" "}
+              </Typography>
+            }
+          />
+          <CardMedia
+            sx={styles.media}
+            image={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                : img
+            }
+          />
+        </Link>
+      </CardActionArea>
       <CardContent>
         <Grid container>
           <Grid item xs={6}>
