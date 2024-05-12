@@ -10,6 +10,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
+import Link from "@mui/material/Link";
 
 const styles = {
   chipSet: {
@@ -67,6 +68,16 @@ const MovieDetails: React.FC<MovieT> = (props) => {
         />
         <Chip label={`Released: ${movie.release_date}`} />
       </Paper>
+      <Typography variant="h5" component="h3">
+        <Link href={`/movies/${movie.id}/cast`}>
+          View Movie Cast of {movie.title}
+        </Link>
+      </Typography>
+      <Typography variant="h5" component="h3">
+        <Link href={`/movies/${movie.id}/crew`}>
+          View Movie Crew of {movie.title}
+        </Link>
+      </Typography>
       <Fab
         color="secondary"
         variant="extended"

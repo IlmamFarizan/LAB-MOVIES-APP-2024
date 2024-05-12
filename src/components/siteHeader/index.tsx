@@ -107,18 +107,6 @@ const SiteHeader: React.FC = () => {
         >
           <Box sx={{ flexGrow: 1 }}>
             <Toolbar>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={auth}
-                      onChange={handleChange}
-                      aria-label="login switch"
-                    />
-                  }
-                  label={auth ? "Logout" : "Login"}
-                />
-              </FormGroup>
               <IconButton
                 size="large"
                 edge="start"
@@ -131,43 +119,11 @@ const SiteHeader: React.FC = () => {
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 TMDB Client
               </Typography>
-              {auth && (
-                <div>
-                  <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleMenu}
-                    color="inherit"
-                  >
-                    <AccountCircle />
-                  </IconButton>
-                  <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorElIcon}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    open={Boolean(anchorElIcon)}
-                    onClose={handleClose}
-                  >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                  </Menu>
-                </div>
-              )}
+
               <Typography variant="body1" sx={styles.title}></Typography>
               <Typography variant="h6" sx={styles.title}>
                 Welcome
               </Typography>
-
               <div>
                 <Button
                   id="basic-button"
@@ -178,7 +134,6 @@ const SiteHeader: React.FC = () => {
                 >
                   Movies
                 </Button>
-
                 <Menu
                   id="basic-menu"
                   anchorEl={anchorElM1}
