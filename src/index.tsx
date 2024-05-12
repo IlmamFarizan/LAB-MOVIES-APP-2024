@@ -11,18 +11,19 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from "./pages/addMovieReviewPage";
+import PlayListMoviesPage from "./pages/playListPage";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 360000,
+      refetchInterval: 360000,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 360000,
-        refetchInterval: 360000,
-        refetchOnWindowFocus: false,
-      },
-    },
-  });
-
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -36,12 +37,14 @@ const App = () => {
               path="/movies/favourites"
               element={<FavouriteMoviesPage />}
             />
+            <Route path="/movies/playList" element={<PlayListMoviesPage />} />
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };
