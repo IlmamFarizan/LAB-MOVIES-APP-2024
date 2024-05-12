@@ -27,10 +27,6 @@ const PeopleHeader: React.FC<PersonT> = (props) => {
   const favourites = localStorage.getItem("favourites");
   return (
     <Paper component="div" sx={styles.root}>
-      <IconButton aria-label="go back">
-        <ArrowBackIcon color="primary" fontSize="large" />
-      </IconButton>
-
       <CardHeader
         avatar={
           props.favourite ? (
@@ -50,9 +46,6 @@ const PeopleHeader: React.FC<PersonT> = (props) => {
         <br />
         <span>{`${props.known_for_department}`} </span>
       </Typography>
-      <IconButton aria-label="go forward">
-        <ArrowForwardIcon color="primary" fontSize="large" />
-      </IconButton>
     </Paper>
   );
 };

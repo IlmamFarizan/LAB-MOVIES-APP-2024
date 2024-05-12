@@ -31,10 +31,6 @@ const PeopleHeader: React.FC<PersonT> = (props) => {
   console.log(favourites);
   return (
     <Paper component="div" sx={styles.root}>
-      <IconButton aria-label="go back">
-        <ArrowBackIcon color="primary" fontSize="large" />
-      </IconButton>
-
       <CardHeader
         avatar={
           props.favourite ? (
@@ -53,9 +49,6 @@ const PeopleHeader: React.FC<PersonT> = (props) => {
         </a>
       </Typography>
       <br></br>
-      <IconButton aria-label="go forward">
-        <ArrowForwardIcon color="primary" fontSize="large" />
-      </IconButton>
     </Paper>
   );
 };

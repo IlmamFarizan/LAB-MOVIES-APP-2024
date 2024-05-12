@@ -22,10 +22,6 @@ const styles = {
 const MovieHeader: React.FC<MovieT> = (props) => {
   return (
     <Paper component="div" sx={styles.root}>
-      <IconButton aria-label="go back">
-        <ArrowBackIcon color="primary" fontSize="large" />
-      </IconButton>
-
       {props.favourite && (
         <Avatar sx={{ backgroundColor: "rgb(255, 0, 0)" }}>
           <FavoriteIcon />
@@ -41,9 +37,6 @@ const MovieHeader: React.FC<MovieT> = (props) => {
         <br />
         <span>{`${props.tagline}`} </span>
       </Typography>
-      <IconButton aria-label="go forward">
-        <ArrowForwardIcon color="primary" fontSize="large" />
-      </IconButton>
     </Paper>
   );
 };
