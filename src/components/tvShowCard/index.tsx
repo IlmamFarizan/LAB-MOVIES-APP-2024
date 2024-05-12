@@ -11,13 +11,11 @@ import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from "../../images/film-poster-placeholder.png";
-//import { BaseMovie } from "../../types/interfaces";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { CardActionArea } from "@mui/material";
-
 import { TVShowContext } from "../../contexts/tvShowsContext";
-import { BaseTVShow } from "../../types/interfaces";
+import { TVShowT } from "../../types/interfaces";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -28,8 +26,8 @@ const styles = {
 };
 
 interface TVShowProps {
-  tvShow: BaseTVShow;
-  action: (m: BaseTVShow) => React.ReactNode;
+  tvShow: TVShowT;
+  action: (m: TVShowT) => React.ReactNode;
 }
 
 const TVShowCard: React.FC<TVShowProps> = (props) => {

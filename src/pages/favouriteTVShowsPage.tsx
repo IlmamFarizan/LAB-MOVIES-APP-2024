@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PageTemplate from "../components/templateMovieListPage";
+import PageTemplate from "../components/templateTVShowListPage";
 import { TVShowContext } from "../contexts/tvShowsContext";
 import { useQueries } from "react-query";
 import { getTVShow } from "../api/tmdb-api";
@@ -8,7 +8,7 @@ import useFiltering from "../hooks/useFiltering";
 import TVShowFilterUI, { nameFilter } from "../components/tvShowFilterUI";
 import { TVShowT } from "../types/interfaces";
 import RemoveFromFavouriteTVShow from "../components/cardIcons/removeFromFavouritesTVShow";
-import WriteReview from "../components/cardIcons/writeReview";
+import WriteReviewTVShow from "../components/cardIcons/writeReviewTVShow";
 
 const nameFiltering = {
   name: "name",
@@ -20,8 +20,6 @@ export const genreFiltering = {
   name: "genre",
   value: "0",
   condition: function (tvShow: TVShowT, value: string) {
-    // Is user selected genre in this movies's genre list?
-    // Always true if selected genre ia All (0).
     const genreId = Number(value);
     const genre_ids = tvShow.genres.map((g) => g.id);
     return genreId > 0 ? genre_ids.includes(genreId) : true;
@@ -67,12 +65,12 @@ const FavouriteTVShowsPage: React.FC = () => {
     <>
       <PageTemplate
         title="Favourite TV Shows"
-        movies={displayTVShows}
+        tvShows={displayTVShows}
         action={(tvShow) => {
           return (
             <>
               <RemoveFromFavouriteTVShow {...tvShow} />
-              <WriteReview {...tvShow} />
+              <WriteReviewTVShow {...tvShow} />
             </>
           );
         }}

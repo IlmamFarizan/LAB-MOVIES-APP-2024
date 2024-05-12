@@ -17,6 +17,11 @@ import TVShow from "./pages/tvShowDetailsPage";
 import TVShowContextProvider from "./contexts/tvShowsContext";
 import FavouriteTVShowsPage from "./pages/favouriteTVShowsPage";
 import TVShowsAiringTodayPage from "./pages/tvShowsAiringTodayPage";
+import PeopleHomePage from "./pages/peopleHomePage";
+import PeopleDetailPage from "./pages/peopleDetailPage";
+import PersonMoviesPage from "./pages/personMoviesPage";
+import PersonTVShowsPage from "./pages/personTVShowsPage";
+import AddMovieTVShowPage from "./pages/addTVShowReviewPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,6 +42,7 @@ const App = () => {
           <TVShowContextProvider>
             <Routes>
               <Route path="/reviews/form" element={<AddMovieReviewPage />} />
+              <Route path="/reviews/tv/form" element={<AddMovieTVShowPage />} />
               <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
               <Route path="/reviews/:id" element={<MovieReviewPage />} />
               <Route
@@ -56,6 +62,13 @@ const App = () => {
               <Route
                 path="/tvshows/today"
                 element={<TVShowsAiringTodayPage />}
+              />
+              <Route path="/people" element={<PeopleHomePage />} />
+              <Route path="/people/:id" element={<PeopleDetailPage />} />
+              <Route path="/people/:id/movies" element={<PersonMoviesPage />} />
+              <Route
+                path="/people/:id/tvShows"
+                element={<PersonTVShowsPage />}
               />
             </Routes>
           </TVShowContextProvider>

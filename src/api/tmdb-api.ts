@@ -188,3 +188,132 @@ export const getTVShowsAiringToday = () => {
       throw error;
     });
 };
+
+export const getActors = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/popular?api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&language=en-US&include_adult=false&include_video=false&page=1`
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch People. Response status: ${response.status}`
+        );
+      return response.json();
+    })
+
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getGenresTV = () => {
+  return fetch(
+    "https://api.themoviedb.org/3/genre/tv/list?api_key=" +
+      import.meta.env.VITE_TMDB_KEY +
+      "&language=en-US"
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch genres. Response status: ${response.status}`
+        );
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getPerson = (id: string) => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/${id}?api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&language=en-US&page=1`
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch People. Response status: ${response.status}`
+        );
+      return response.json();
+    })
+
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getPersonFromName = (name: string) => {
+  return fetch(
+    `https://api.themoviedb.org/3/person?query=${name}api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&language=en-US&include_adult=false&include_video=false&page=1`
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch People. Response status: ${response.status}`
+        );
+      return response.json();
+    })
+
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getPersonImages = (id: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/${id}/images?api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("failed to fetch images");
+      }
+      return response.json();
+    })
+    .then((json) => json.posters)
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getMoviesForPerson = (id: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&language=en-US&include_adult=false&include_video=false&page=1`
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch movies. Response status: ${response.status}`
+        );
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getTVShowsForPerson = (id: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/${id}/tv_credits?api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&language=en-US&include_adult=false&include_video=false&page=1`
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch movies. Response status: ${response.status}`
+        );
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
