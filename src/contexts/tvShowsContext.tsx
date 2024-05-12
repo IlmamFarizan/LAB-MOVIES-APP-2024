@@ -5,7 +5,7 @@ interface TVShowContextInterface {
   favourites: number[];
   addToFavourites: (tvShow: TVShowT) => void;
   removeFromFavourites: (tvShow: TVShowT) => void;
-  addReview: (movie: TVShowT, review: TVShowReview) => void;
+  addReview: (tvShow: TVShowT, review: TVShowReview) => void;
 }
 const initialContextState = {
   favourites: [],
@@ -25,7 +25,7 @@ export const TVShowContext =
 
 const TVShowContextProvider: React.FC<React.PropsWithChildren> = (props) => {
   const [favourites, setFavourites] = useState<number[]>([]);
-  const [myReviews, setMyReviews] = useState<TVShowReview[]>([]); // NEW
+  const [myReviews, setMyReviews] = useState<TVShowReview[]>([]);
   const addToFavourites = (tvShow: TVShowT) => {
     let updatedFavourites = [...favourites];
     if (!favourites.includes(tvShow.id)) {
@@ -37,7 +37,6 @@ const TVShowContextProvider: React.FC<React.PropsWithChildren> = (props) => {
     setFavourites(favourites.filter((mId) => mId !== tvShow.id));
   };
   const addReview = (tvShow: TVShowT, review: TVShowReview) => {
-    // NEW
     setMyReviews({ ...myReviews, [tvShow.id]: review });
   };
 

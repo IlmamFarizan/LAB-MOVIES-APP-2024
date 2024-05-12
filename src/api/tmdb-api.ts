@@ -353,3 +353,57 @@ export const getTVShowSimilar = (id: string | number) => {
       throw error;
     });
 };
+
+export const getTVShowSearch = (query: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/search/tv?query=${query}&api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&include_adult=false&language=en-US&page=1`
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch search results for tv shows. Response status: ${response.status} and query is: ${query}`
+        );
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getMovieSearch = (query: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&include_adult=false&language=en-US&page=1`
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch search results for movies. Response status: ${response.status} and query is: ${query}`
+        );
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getPersonSearch = (query: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/search/person?query=${query}&api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&include_adult=false&language=en-US&page=1`
+  )
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Unable to fetch search results for person. Response status: ${response.status} and query is: ${query}`
+        );
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};

@@ -4,11 +4,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import HomeIcon from "@mui/icons-material/Home";
-import Avatar from "@mui/material/Avatar";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import CardHeader from "@mui/material/CardHeader";
-import { PersonT } from "../../types//interfaces";
 
 const styles = {
   root: {
@@ -23,32 +18,16 @@ const styles = {
   },
 };
 
-const PeopleHeader: React.FC<PersonT> = (props) => {
-  const favourites = localStorage.getItem("favourites");
+const PeopleSearchHeader: React.FC = () => {
   return (
     <Paper component="div" sx={styles.root}>
       <IconButton aria-label="go back">
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
-      <CardHeader
-        avatar={
-          props.favourite ? (
-            <Avatar sx={styles.avatar}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
-        }
-      />
-
       <Typography variant="h4" component="h3">
-        {props.name}
-        {"   "}
-        <a href={props.profile_path}>
-          <HomeIcon color="primary" fontSize="large" />
-        </a>
+        Search For People
         <br />
-        <span>{`${props.known_for_department}`} </span>
       </Typography>
       <IconButton aria-label="go forward">
         <ArrowForwardIcon color="primary" fontSize="large" />
@@ -57,4 +36,4 @@ const PeopleHeader: React.FC<PersonT> = (props) => {
   );
 };
 
-export default PeopleHeader;
+export default PeopleSearchHeader;

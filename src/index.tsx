@@ -25,6 +25,14 @@ import AddMovieTVShowPage from "./pages/addTVShowReviewPage";
 import MovieCast from "./pages/movieCastPage";
 import MovieCrew from "./pages/movieCrewPage";
 import TVShowSimilar from "./pages/tvShowSimilarPage";
+import TVShowSearch from "./pages/tvShowSearchPage";
+import TVShowSearchResults from "./pages/tvShowSearchResults";
+import MovieSearch from "./pages/movieSearchPage";
+import MovieSearchResults from "./pages/movieSearchResults";
+import PersonSearch from "./pages/personSearchPage";
+import PersonSearchResults from "./pages/personSearchResults";
+import FavouritePeoplePage from "./pages/favouritePeoplePage";
+import PeopleContextProvider from "./contexts/peopleContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,40 +51,85 @@ const App = () => {
         <SiteHeader />
         <MoviesContextProvider>
           <TVShowContextProvider>
-            <Routes>
-              <Route path="/reviews/form" element={<AddMovieReviewPage />} />
-              <Route path="/reviews/tv/form" element={<AddMovieTVShowPage />} />
-              <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-              <Route path="/reviews/:id" element={<MovieReviewPage />} />
-              <Route
-                path="/movies/favourites"
-                element={<FavouriteMoviesPage />}
-              />
-              <Route path="/movies/playList" element={<PlayListMoviesPage />} />
-              <Route path="/movies/:id" element={<MoviePage />} />
-              <Route path="/movies/:id/cast" element={<MovieCast />} />
-              <Route path="/movies/:id/crew" element={<MovieCrew />} />
-              <Route path="/" element={<HomePage />} />
-              <Route path="*" element={<Navigate to="/" />} />
-              <Route path="/tvshows/" element={<TVShowsHomePage />} />
-              <Route path="/tvshows/:id" element={<TVShow />} />
-              <Route path="/tvshows/:id/similar" element={<TVShowSimilar />} />
-              <Route
-                path="/tvshows/favourites/"
-                element={<FavouriteTVShowsPage />}
-              />
-              <Route
-                path="/tvshows/today"
-                element={<TVShowsAiringTodayPage />}
-              />
-              <Route path="/people" element={<PeopleHomePage />} />
-              <Route path="/people/:id" element={<PeopleDetailPage />} />
-              <Route path="/people/:id/movies" element={<PersonMoviesPage />} />
-              <Route
-                path="/people/:id/tvShows"
-                element={<PersonTVShowsPage />}
-              />
-            </Routes>
+            <PeopleContextProvider>
+              <Routes>
+                {/* Reviews Module */}
+                <Route path="/reviews/form" element={<AddMovieReviewPage />} />
+                <Route
+                  path="/reviews/tv/form"
+                  element={<AddMovieTVShowPage />}
+                />
+                <Route path="/reviews/:id" element={<MovieReviewPage />} />
+
+                {/* Movies Module */}
+                <Route
+                  path="/movies/favourites"
+                  element={<FavouriteMoviesPage />}
+                />
+                <Route
+                  path="/movies/upcoming"
+                  element={<UpcomingMoviesPage />}
+                />
+                <Route
+                  path="/movies/playList"
+                  element={<PlayListMoviesPage />}
+                />
+                <Route path="/movies/:id" element={<MoviePage />} />
+                <Route path="/movies/:id/cast" element={<MovieCast />} />
+                <Route path="/movies/:id/crew" element={<MovieCrew />} />
+                <Route path="/movies/search/" element={<MovieSearch />} />
+                <Route
+                  path="/movies/search/:query/results"
+                  element={<MovieSearchResults />}
+                />
+                <Route path="/" element={<HomePage />} />
+
+                {/* No Page Fallback */}
+                <Route path="*" element={<Navigate to="/" />} />
+
+                {/* TV Shows Module */}
+                <Route path="/tvshows/" element={<TVShowsHomePage />} />
+                <Route path="/tvshows/:id" element={<TVShow />} />
+                <Route path="/tvshows/search/" element={<TVShowSearch />} />
+                <Route
+                  path="/tvshows/search/:query/results"
+                  element={<TVShowSearchResults />}
+                />
+                <Route
+                  path="/tvshows/:id/similar"
+                  element={<TVShowSimilar />}
+                />
+                <Route
+                  path="/tvshows/favourites/"
+                  element={<FavouriteTVShowsPage />}
+                />
+                <Route
+                  path="/tvshows/today"
+                  element={<TVShowsAiringTodayPage />}
+                />
+
+                {/* People Module */}
+                <Route path="/people" element={<PeopleHomePage />} />
+                <Route path="/people/:id" element={<PeopleDetailPage />} />
+                <Route
+                  path="/people/:id/movies"
+                  element={<PersonMoviesPage />}
+                />
+                <Route
+                  path="/people/favourites"
+                  element={<FavouritePeoplePage />}
+                />
+                <Route
+                  path="/people/:id/tvShows"
+                  element={<PersonTVShowsPage />}
+                />
+                <Route path="/people/search/" element={<PersonSearch />} />
+                <Route
+                  path="/people/search/:query/results"
+                  element={<PersonSearchResults />}
+                />
+              </Routes>
+            </PeopleContextProvider>
           </TVShowContextProvider>
         </MoviesContextProvider>
         <SiteHeader />

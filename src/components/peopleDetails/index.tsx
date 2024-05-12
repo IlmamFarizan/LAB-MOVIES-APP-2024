@@ -9,7 +9,6 @@ import { PersonT } from "../../types/interfaces";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
-import Link from "@mui/material/Link";
 
 const styles = {
   chipSet: {
@@ -48,16 +47,6 @@ const PersonDetails: React.FC<PersonT> = (props) => {
         <Chip icon={<StarRate />} label={`${person.popularity} `} />
         <Chip label={`D.O.B: ${person.birthday}`} />
       </Paper>
-      <Typography variant="h5" component="h3">
-        <Link href={`/people/${person.id}/movies`}>
-          View Movies starring {person.name}
-        </Link>
-      </Typography>
-      <Typography variant="h5" component="h3">
-        <Link href={`/people/${person.id}/tvShows`}>
-          View TV Shows starring {person.name}
-        </Link>
-      </Typography>
     </>
   );
 };

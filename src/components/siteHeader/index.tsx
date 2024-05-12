@@ -107,15 +107,6 @@ const SiteHeader: React.FC = () => {
         >
           <Box sx={{ flexGrow: 1 }}>
             <Toolbar>
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 2 }}
-              >
-                <MenuIcon />
-              </IconButton>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 TMDB Client
               </Typography>
@@ -148,7 +139,7 @@ const SiteHeader: React.FC = () => {
                       to="/"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Movies Home
+                      HOME
                     </NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleCloseM1}>
@@ -156,7 +147,7 @@ const SiteHeader: React.FC = () => {
                       to="/movies/upcoming"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Upcoming Movies
+                      UPCOMING
                     </NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleCloseM1}>
@@ -164,7 +155,15 @@ const SiteHeader: React.FC = () => {
                       to="/movies/favourites"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Favourite Movies
+                      FAVOURITE
+                    </NavLink>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseM2}>
+                    <NavLink
+                      to="/movies/playlist"
+                      style={{ color: "white", textDecoration: "none" }}
+                    >
+                      PLAYLIST
                     </NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleCloseM1}>
@@ -172,38 +171,7 @@ const SiteHeader: React.FC = () => {
                       to="/movies/search"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Search Movies
-                    </NavLink>
-                  </MenuItem>
-                </Menu>
-              </div>
-
-              <div>
-                <Button
-                  id="play-button"
-                  aria-controls={open2 ? "play-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open2 ? "true" : undefined}
-                  onClick={handleClickM2}
-                >
-                  PlayList
-                </Button>
-
-                <Menu
-                  id="play-menu"
-                  anchorEl={anchorElM2}
-                  open={open2}
-                  onClose={handleCloseM2}
-                  MenuListProps={{
-                    "aria-labelledby": "play-button",
-                  }}
-                >
-                  <MenuItem onClick={handleCloseM2}>
-                    <NavLink
-                      to="/movies/playlist"
-                      style={{ color: "white", textDecoration: "none" }}
-                    >
-                      PlayList
+                      SEARCH
                     </NavLink>
                   </MenuItem>
                 </Menu>
@@ -234,7 +202,7 @@ const SiteHeader: React.FC = () => {
                       to="/tvshows/"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      TV Shows Home
+                      HOME
                     </NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleCloseTVShows}>
@@ -242,7 +210,7 @@ const SiteHeader: React.FC = () => {
                       to="/tvshows/today"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Today's TV Shows
+                      LATEST
                     </NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleCloseTVShows}>
@@ -250,7 +218,7 @@ const SiteHeader: React.FC = () => {
                       to="/tvshows/favourites/"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Favourite TV Shows
+                      FAVOURITE
                     </NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleCloseTVShows}>
@@ -258,7 +226,7 @@ const SiteHeader: React.FC = () => {
                       to="/tvshows/search/"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Search TV Shows
+                      SEARCH
                     </NavLink>
                   </MenuItem>
                 </Menu>
@@ -289,7 +257,7 @@ const SiteHeader: React.FC = () => {
                       to="/people"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Actors
+                      ACTORS
                     </NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleClosePeople}>
@@ -297,7 +265,7 @@ const SiteHeader: React.FC = () => {
                       to="/people/favourites"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Favourite Actors
+                      FAVOURITE
                     </NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleClosePeople}>
@@ -305,7 +273,7 @@ const SiteHeader: React.FC = () => {
                       to="/people/search"
                       style={{ color: "white", textDecoration: "none" }}
                     >
-                      Search People
+                      SEARCH
                     </NavLink>
                   </MenuItem>
                 </Menu>
